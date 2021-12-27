@@ -2,7 +2,11 @@ from flask import Flask, render_template, render_template_string, request
 from jinja2 import Template
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/<name>')
+def hello_world(name):
+    return render_template('index.html', name = name)
+
+@app.route('/test')
 def wtf():
     name = request.args.get('name')
     t = Template(
